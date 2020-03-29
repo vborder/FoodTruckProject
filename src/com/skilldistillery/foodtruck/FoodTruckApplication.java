@@ -6,10 +6,10 @@ public class FoodTruckApplication {
 
 //		Grading:
 		
-//		There are no static methods other than the one main method.
+//		There are no static methods other than the one main method. [COMPLETED]
 		
 //		When a FoodTruck is created, its constructor assigns its id field the 
-//		current value of a static field, then increments the static field.
+//		current value of a static field, then increments the static field. [COMPLETED]
 		
 //		The user can input up to five food trucks. [COMPLETED]
 //		
@@ -20,7 +20,7 @@ public class FoodTruckApplication {
 //		less than five were input, only those trucks that were created are displayed. [COMPLETED]
 //		
 //		When another menu item is chosen the average rating based on the number of 
-//		trucks entered is displayed.
+//		trucks entered is displayed. [COMPLETED]
 //		
 //		When another menu item is chosen the winning truck - the one that was input
 //		with the highest rating - is displayed with all its properties. [COMPLETED]
@@ -40,9 +40,6 @@ public class FoodTruckApplication {
 	}
 	public void createTrucks() {
 		System.out.println("Welcome to the MobileBites App!");
-//		System.out.print("How many food trucks would you like to enter? Enter up"
-//				+ " to 5: ");
-//		int arr = kb.nextInt();
 		
 		for(int i = 0; i < ftArray.length; i++) {
 			System.out.println("Enter the name of the truck food, or enter \"quit\" to "
@@ -98,22 +95,25 @@ public class FoodTruckApplication {
 		for (int i = 0; i < ftArray.length; i++) {
 			if(ftArray[i] != null) {
 				System.out.println(ftArray[i].toString());
+				System.out.println();
 			}
 		}
 	}
 	
 	public void ftRating() {
 		double totalRating = 0.0;
+		int counter = 0;
 		for (int i = 0; i < ftArray.length; i++) {
-		totalRating += ftArray[i].getRating();
+			if(ftArray[i] != null) {
+				counter++;
+				totalRating += ftArray[i].getRating();
+			}
 		}
 		
-//	int avgRating = totalRating / ftArray.length;
+	double avgRating = totalRating / counter;
+	System.out.println("The average rating of the food trucks is: " + avgRating);
+	System.out.println();
 	}
-	
-//	public void ftAverage() {
-//		
-//	}
 	
 	public void ftHighestRating() {
 		FoodTruck hTruck = ftArray[0];
@@ -122,9 +122,11 @@ public class FoodTruckApplication {
 				if (hTruck.getRating() < ftArray[i].getRating()) {
 					hTruck = ftArray[i];
 				}
+		
 			}
 		}
 		System.out.println(hTruck);
+		System.out.println();
 	}
 		
 }
