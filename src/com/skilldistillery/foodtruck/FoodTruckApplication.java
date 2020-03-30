@@ -6,37 +6,36 @@ public class FoodTruckApplication {
 
 //		Grading:
 		
-//		There are no static methods other than the one main method. [COMPLETED]
+//		There are no static methods other than the one main method.
 		
 //		When a FoodTruck is created, its constructor assigns its id field the 
-//		current value of a static field, then increments the static field. [COMPLETED]
+//		current value of a static field, then increments the static field.
 		
-//		The user can input up to five food trucks. [COMPLETED]
+//		The user can input up to five food trucks.
 //		
 //		The user can stop inputing trucks before entering five by entering quit as 
-//		the truck name, after which all input stops and the program continues. [COMPLETED]
+//		the truck name, after which all input stops and the program continues.
 //		
 //		When a menu item is chosen the list of all trucks entered is displayed. If 
-//		less than five were input, only those trucks that were created are displayed. [COMPLETED]
+//		less than five were input, only those trucks that were created are displayed.
 //		
 //		When another menu item is chosen the average rating based on the number of 
-//		trucks entered is displayed. [COMPLETED]
+//		trucks entered is displayed.
 //		
 //		When another menu item is chosen the winning truck - the one that was input
-//		with the highest rating - is displayed with all its properties. [COMPLETED]
+//		with the highest rating - is displayed with all its properties.
 //		
-//		Food trucks are displayed by printing its toString, which includes all FoodTruck fields. [COMPLETED]
+//		Food trucks are displayed by printing its toString, which includes all FoodTruck fields.
 //		
-//		When the quit menu item is chosen, the program ends with a message. [COMPLETED]
+//		When the quit menu item is chosen, the program ends with a message.
 	
-	private static int MAX_Trucks = 5;
-	FoodTruck[] ftArray = new FoodTruck[MAX_Trucks];
+	private static int MAX_TRUCKS = 5;
+	FoodTruck[] ftArray = new FoodTruck[MAX_TRUCKS];
 	Scanner kb = new Scanner(System.in);
 	
 	public static void main(String[] args) {
 		FoodTruckApplication ftApp = new FoodTruckApplication();
 		ftApp.createTrucks();
-		ftApp.printMenu();
 	}
 	public void createTrucks() {
 		System.out.println("Welcome to the MobileBites App!");
@@ -52,7 +51,7 @@ public class FoodTruckApplication {
 			System.out.println("Enter the food type: ");
 			String foodType = kb.next();
 			
-			System.out.println("Enter a rating for the truck, from 1 (lowest) to 5: ");
+			System.out.println("Enter a rating for the truck, from 1 (lowest) to 5 stars: ");
 			int rating = kb.nextInt();
 			
 			ftArray[i] = new FoodTruck();
@@ -61,15 +60,17 @@ public class FoodTruckApplication {
 			ftArray[i].setRating(rating);
 			ftArray[i].setNumericId(i + 1);
 		}
+		printMenu();
+		System.out.println();
 	}
 	public void printMenu() {
 		int menuSel = 0;
 		do {
 			
-			System.out.println("------------------MENU-------------------");
-			System.out.println("        Select a menu item (number)      ");
+			System.out.println("--------------------MENU---------------------");
+			System.out.println("          Select a menu item (number)        ");
 			System.out.println("1: List all existing food trucks.");
-			System.out.println("2: See the average rating of food trucks.");
+			System.out.println("2: See the average rating of the food trucks.");
 			System.out.println("3: Display the highest-rated food truck.");
 			System.out.println("4: Quit the program.");
 			menuSel = kb.nextInt();
@@ -95,9 +96,9 @@ public class FoodTruckApplication {
 		for (int i = 0; i < ftArray.length; i++) {
 			if(ftArray[i] != null) {
 				System.out.println(ftArray[i].toString());
-				System.out.println();
 			}
 		}
+		System.out.println();
 	}
 	
 	public void ftRating() {
@@ -110,9 +111,9 @@ public class FoodTruckApplication {
 			}
 		}
 		
-	double avgRating = totalRating / counter;
-	System.out.println("The average rating of the food trucks is: " + avgRating);
-	System.out.println();
+		double avgRating = totalRating / counter;
+		System.out.println("The average rating of the food trucks is: " + (Math.round(avgRating)) + " stars");
+		System.out.println();
 	}
 	
 	public void ftHighestRating() {
@@ -125,7 +126,7 @@ public class FoodTruckApplication {
 		
 			}
 		}
-		System.out.println(hTruck);
+		System.out.println("The highest rated food truck is: " + hTruck);
 		System.out.println();
 	}
 		

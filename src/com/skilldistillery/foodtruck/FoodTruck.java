@@ -12,9 +12,6 @@ public class FoodTruck {
 		this.name = name;
 		this.foodType = foodType;
 		this.rating = rating;
-//		FoodTruck.nextTruckID++;
-//		this.numericId = numericId;
-//		this.numericId = nextTruckID++;
 	}
 	
 	public FoodTruck() {
